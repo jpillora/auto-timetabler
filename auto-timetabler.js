@@ -3,41 +3,85 @@
  * @date 13/06/2012
  * @version 0.1
  */
-(function ($) {
+$(function(){
+  "use strict";
   
-  Subject = Backbone.Model.extend({
-    name: null
+  function log(str){ console.log(str); }
+  
+  
+  //SUBJECT MODELS
+  var Subject = Backbone.Model.extend({
+    initialize: function() { 
+      log("NEW Subject Model"); 
+      this.view = new ClassView();
+      this.classes = new Classes( null, { subView: this });
+      
+    },
+    name: null,
+    code: null,
+    view: null
   });
   
-  Subjects = Backbone.Collection.extend({
-    initialize: function (models, options) {
-      this.bind("add", options.view.addFriendLi);
-    }
+  var Subjects = Backbone.Collection.extend({
+    initialize: function (model, options) {
+      log("NEW Subjects Collection");
+      this.view = options.subView;
+      this.bind("add", this.view.addSubject);
+    },
+    view: null
   });
-  
-  AppView = Backbone.View.extend({
-    el: $("body"),
+  //SUBJECT VIEW
+  var SubjectsView = Backbone.View.extend({
+    el: $("#subjects"),
     initialize: function () {
-      this.subjects = new Subjects( null, { view: this });
+      //subjects collection
+      this.$list = this.$el.children(".list");
+      this.subjects = new Subjects( null, { subView: this });
     },
     events: {
-      "click #add-friend":  "showPrompt",
+      "click #addSubjectBtn":  "showPrompt"
     },
     showPrompt: function () {
-      var friend_name = prompt("Who is your friend?");
-      var friend_model = new Friend({ name: friend_name });
-      //Add a new friend model to our friend collection
-      this.friends.add( friend_model );
+      var name = prompt("Subject Name ?");
+      var code = prompt("Subject Code ?");
+      var sub = new Subject({ name: name, code: code });
+      this.subjects.add(sub);
     },
-    addFriendLi: function (model) {
-      //The parameter passed is a reference to the model that was added
-      $("#friends-list").append("<li>" + model.get('name') + "</li>");
-      //Use .get to receive attributes of the model
+    
+    addSubject: function (sub, subs) {
+      var cont = $("<div></div>").css({'border-radius':5, 'background':'grey', width:400, 'color':'white','padding':30, 'margin':10});
+      if(sub.get('code')) cont.append($("<h1></h1>").html(sub.get('code')).css('font-weight','bold'));
+      if(sub.get('name')) cont.append($("<h3></h3>").html(sub.get('name')).css('text-decoration','underline'));
+      subs.view.$el.append(cont);
     }
   });
   
-  var appview = new AppView;
-})(jQuery);
+  //CLASS CLASSES
+  var Class = Backbone.Model.extend({
+    initialize: function() { log("NEW Class Model"); },
+    name: null
+  });
+  var Classes = Backbone.Collection.extend({
+    
+    initialize: function (model, options) {
+      log("NEW Classes Collection");
+    }
+  });
+  
+  
+  
+  
+  //THE APP
+  var AppView = Backbone.View.extend({
+    el: $("body"),
+    initialize: function () {
+      this.subjectView = new SubjectsView();
+    }
+  });
+  
+  window.app = new AppView;
+  
+});
 
 $(document).ready(function() {
     $("#input").keyup(function() {
