@@ -4,4 +4,4 @@
 
 Originally built for UNSW students, though it will work for any weekly timetable.
 
-Currently being hosted [here](https://jpillora.github.com//gcal-auto-timetabler/blob/master/run.html)
+Currently being hosted [here](http://jpillora.github.com//gcal-auto-timetabler/run.html)
