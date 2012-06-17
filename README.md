@@ -2,6 +2,6 @@
 
 ## A small JavaScript application to insert weekly timetables
 
-Originally built for UNSW students, though it will work for any weekly timetable.
+Original idea was to cater for UNSW students, though once complete, it will work for any weekly timetable.
 
-Currently being hosted [here](http://jpillora.github.com//gcal-auto-timetabler/run.html)
+Once complete, will be hosted [here](http://jpillora.github.com//gcal-auto-timetabler/run.html)
