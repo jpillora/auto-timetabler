@@ -11,48 +11,41 @@ $(function(){
   
   //SUBJECT MODELS
   var Subject = Backbone.Model.extend({
-    initialize: function() { 
-      log("NEW Subject Model"); 
-      this.view = new ClassView();
-      this.classes = new Classes( null, { subView: this });
-      
-    },
-    name: null,
-    code: null,
-    view: null
+    initialize: function() {
+      log("NEW Subject Model");
+      this.view = new ClassesView();
+    }
   });
-  
-  var Subjects = Backbone.Collection.extend({
-    initialize: function (model, options) {
-      log("NEW Subjects Collection");
-      this.view = options.subView;
-      this.bind("add", this.view.addSubject);
-    },
-    view: null
-  });
+
   //SUBJECT VIEW
   var SubjectsView = Backbone.View.extend({
     el: $("#subjects"),
     initialize: function () {
       //subjects collection
       this.$list = this.$el.children(".list");
-      this.subjects = new Subjects( null, { subView: this });
+      this.subjects = new Backbone.Collection()
+      this.bind("add", this.addSubject);
     },
     events: {
-      "click #addSubjectBtn":  "showPrompt"
+      "click #addSubjectBtn":  "buildSubject"
     },
-    showPrompt: function () {
-      var name = prompt("Subject Name ?");
-      var code = prompt("Subject Code ?");
+    buildSubject: function () {
+      var name = "abcd"
+      var code = "1234"
       var sub = new Subject({ name: name, code: code });
       this.subjects.add(sub);
     },
     
     addSubject: function (sub, subs) {
-      var cont = $("<div></div>").css({'border-radius':5, 'background':'grey', width:400, 'color':'white','padding':30, 'margin':10});
-      if(sub.get('code')) cont.append($("<h1></h1>").html(sub.get('code')).css('font-weight','bold'));
-      if(sub.get('name')) cont.append($("<h3></h3>").html(sub.get('name')).css('text-decoration','underline'));
-      subs.view.$el.append(cont);
+      var subDiv = $("<div></div>").css({'border-radius':5, 'background':'grey', width:400, 'color':'white','padding':30, 'margin':10});
+      if(sub.get('code')) subDiv.append($("<h1></h1>").html(sub.get('code')).css('font-weight','bold'));
+      if(sub.get('name')) subDiv.append($("<h3></h3>").html(sub.get('name')).css('text-decoration','underline'));
+      
+      var subClassesDiv = $("<div class='classes'></div>");
+      subDiv.append(subClassesDiv);
+      sub.set('div',subDiv);
+      sub.set('classesDiv',subDiv);
+      subs.view.$el.append(subDiv);
     }
   });
   
@@ -61,6 +54,8 @@ $(function(){
     initialize: function() { log("NEW Class Model"); },
     name: null
   });
+  
+//this.classes = new Classes( null, { subView: this.view });
   var Classes = Backbone.Collection.extend({
     
     initialize: function (model, options) {
@@ -68,6 +63,20 @@ $(function(){
     }
   });
   
+  var ClassesView = Backbone.View.extend({
+    el: $("#subjects"),
+    initialize: function () {
+      this.$list = this.$el.children(".list");
+      this.classes = new Backbone.Collection()
+      this.bind("add", this.addClass);
+    },
+    events: {
+      "click #addSubjectBtn":  "showPrompt"
+    },
+    addClass: function(cl, cls) {
+        
+    }
+  });
   
   
   
@@ -82,6 +91,11 @@ $(function(){
   window.app = new AppView;
   
 });
+/* *******************************\
+ *
+\* *******************************/
+
+
 
 $(document).ready(function() {
     $("#input").keyup(function() {
