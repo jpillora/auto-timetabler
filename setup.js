@@ -11,5 +11,21 @@ $(function(){
     window.App = {};
     window.App.Util = {};
     
+    _.extend(Backbone.View.prototype, {
+      //custom intialiser
+      renderButtons: function() {
+        return this.$("button").each(function(i,e) {
+          
+          var $e = $(e);
+          var showText = $e.attr('data-hidetext') != "true";
+          var settings = { text: showText }
+          var icon = $e.attr('data-icon');
+          if(icon) settings.icons = { secondary: "ui-icon-"+icon };
+          $e.button(settings);
+        });
+      }
+      
+    });
+    
     console.log("setup complete.");
 });

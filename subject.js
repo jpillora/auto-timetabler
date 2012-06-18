@@ -64,6 +64,8 @@ $(function(){
       this.$el.addClass("subject");
       this.$el.html(this.template(this.model.toJSON()));
       this.$(".list").append(this.classDiv);
+      
+      this.renderButtons();
       return this;
     },
     
@@ -80,7 +82,7 @@ $(function(){
 
     createOne: function() {
       log(this.model,"Create one Class");
-      this.model.classes.create({  location: "class-from-"+this.model.get('name') });
+      this.model.classes.create({  location: "class-from-"+this.model.get('name') },{wait: true});
     },
     
     // Remove the item, destroy the model.

@@ -22,7 +22,14 @@ header {
 }
 
 
-#subjects .subject {border-radius:5; background:grey; width:400px; color:white;padding:30px; margin:10px}
+#subjects .subject {
+  border-radius:5; background:white; 
+  width:825px; color:#30273a;padding:30px;
+  margin:10px
+}
+#subjects .subject>button.remove {
+  float:right;
+}
 #subjects .subject .name {font-weight:bold;}
 #subjects .subject .code {text-decoration:underline; }
 

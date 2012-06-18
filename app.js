@@ -25,6 +25,7 @@ $(function(){
 
     render: function() {
       log("Render View");
+      this.renderButtons();
     },
 
     addOne: function(subject) {
@@ -40,7 +41,7 @@ $(function(){
     },
     createOne: function() {
       log("Create one Subject");
-      window.subjects.create({ name: "subject-"+window.guid() });
+      window.subjects.create({ name: "subject-"+window.guid() },{wait: true});
     },
     removeAll: function() {
       while(window.subjects.length) 

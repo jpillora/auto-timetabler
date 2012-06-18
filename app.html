@@ -42,8 +42,8 @@
     <div id="subjects" class="ui-widget ui-widget-content ui-corner-all">
       <div class="ui-widget-header ui-corner-all">Subjects</div>
       <div class="control">
-        <button id="createSub">Create Subject</button>
-        <button id="removeSubs">Remove All</button>
+        <button id="createSub" data-icon="plus">Create Subject</button>
+        <button id="removeSubs" data-icon="trash">Remove All</button>
       </div>
       
       <div id="subject-list"></div>
@@ -52,22 +52,22 @@
     
     <!-- Templates -->
     <script type="text/template" id="subject-template">
-      <h1 class="code"><%= code %></h1>
+      <div class="ui-widget-header ui-corner-all"><%= code %></div>
       <h3 class="name"><%= name %></h3>
-      <button class="remove">Remove</button>
+      <button class="remove" data-icon="trash" data-hidetext="true">Remove</button>
       <div class='classes'>
         <label>Classes</label>
         <div class="list"></div>
         <div class="control">
-          <button class="create">Create Class</button>
+          <button class="create" data-icon="plus">Create Class</button>
         </div>
-        
       </div>
+      
     </script>
     <script type="text/template" id="class-template">
       <span style="font-weight:bold;"><%= name %></span>
       <span><%= location %></span>
-      <button class="remove">Remove</button>
+      <button class="remove" data-icon="trash" data-hidetext="true">Remove</button>
     </script>
   
   </div>
