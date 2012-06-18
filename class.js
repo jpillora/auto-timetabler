@@ -6,15 +6,10 @@
 $(function(){
   
   window.Class = Backbone.Model.extend({
-    // Defaults
-    defaults: function() {
-      return {
-        location: "Sydney"
-      };
-    },
     initialize: function() {
-      if (!this.get("location"))
-        this.set({"location": this.defaults.location});
+    },
+    clear: function() {
+      this.destroy();
     }
   });
 
@@ -31,14 +26,14 @@ $(function(){
     
     initialize: function () {
       this.model.bind('change', this.render, this);
-      this.model.bind('clear', this.remove, this);
+      this.model.bind('destroy', this.remove, this);
     },
     
     render: function() {
       this.$el.html(this.template(this.model.toJSON()));
       return this;
     },
-    
+
     // Remove the item, destroy the model.
     clear: function() {
       this.model.clear();

@@ -5,25 +5,21 @@
 //App classes
 $(function(){
   
+  //Private helpers
   var log = function(str) { console.log("App: " + str); };
   
   window.AppView = Backbone.View.extend({
     el: $("#app"),
     
     events: {
-      "click #createSub":  "createOne",
-      "click #removeSub":  "removeOne",
-      "click #removeAllSubs":  "removeAll"
+      "click #createSub":  "createOne"
     },
     
     initialize: function() {
-
-      this.subjectList = this.$("#subjects .list");
-
       window.subjects.bind('add', this.addOne, this);
-      window.subjects.bind('remove', this.removeView, this);
+      window.subjects.bind('reset', this.addAll, this);
       window.subjects.bind('all', this.render, this);
-      
+      window.subjects.fetch();
     },
 
     render: function() {
@@ -32,35 +28,16 @@ $(function(){
 
     addOne: function(subject) {
       var view = new SubjectView({model: subject});
-      this.subjectList.append(view.render().el);
+      this.$("#subject-list").append(view.render().el);
     },
-
-    createOne: function(e) {
+    addAll: function() {
+      window.subjects.each(this.addOne);
+    },
+    createOne: function() {
       log("Create one Subject");
-      window.subjects.add({ id:window.guid() });
-    },
-    
-    removeView: function(sub) {
-      log("Remove a Subject");
-      sub.view.remove();
-    },
-    removeOne: function(obj) {
-      if(window.subjects.length ==0) {
-        log("cannot remove. no subjects left");
-        return;
-      }
-      var s = window.subjects.pop();
-      log("Remove one Subject: " + s.id);
+      window.subjects.create({ name: "subject-"+window.guid() });
     },
 
-    removeAll: function() {
-      
-      window.subjects.each(function(s) { 
-        log("Remove each Subjects: " + s.id);
-        //s.clear({}); 
-      
-      });
-    }
   });
   
   window.appView = new AppView();

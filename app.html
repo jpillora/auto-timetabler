@@ -6,14 +6,14 @@
      * @date 13/06/2012
      * @version 0.1
      *
-     
-    <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.2/backbone-min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.0/backbone.localStorage-min.js"></script>
+    <script src="http://cdn.jpillora.com/js/backbone.js"></script>
     -->
     <link  href="http://cdn.jpillora.com/css/reset.css" rel="stylesheet" type="text/css">
+    <link  href="css/app.css" rel="stylesheet" type="text/css">
     <script src="http://cdn.jpillora.com/js/jquery.js"></script>
     <script src="http://cdn.jpillora.com/js/underscore.js"></script>
-    <script src="http://cdn.jpillora.com/js/backbone.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.2/backbone-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.0/backbone.localStorage-min.js"></script>
     <script src="setup.js"></script>
     <script src="subject.js"></script>
     <script src="class.js"></script>
@@ -26,11 +26,9 @@
     <hr/>
     <div class="control">
       <button id="createSub">Create Subject</button>
-      <button id="removeSub">Remove Subject</button>
-      <button id="removeAllSubs">Remove All Subjects</button>
     </div>
     
-    <div class="list"></div>
+    <div id="subject-list"></div>
   </div>
   
   
@@ -38,15 +36,15 @@
   <script type="text/template" id="subject-template">
     <h1 class="code"><%= code %></h1>
     <h3 class="name"><%= name %></h3>
-    <label>Classes</label>
+    <button class="removeThis">Remove This</button>
     <div class='classes'>
+      <label>Classes</label>
+      <div class="list"></div>
       <div class="control">
-        <button class="removeThis">Remove This</button>
         <button class="create">Create Class</button>
         <button class="removeAllClasses">Remove All Classes</button>
       </div>
       
-      <div class="list"></div>
     </div>
   </script>
   <script type="text/template" id="class-template">
