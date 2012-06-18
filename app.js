@@ -2,7 +2,7 @@
 //@author: jpillora
 //@date: 15/6/2012
 //
-//App classes
+//App classes 
 $(function(){
   
   //Private helpers
@@ -12,7 +12,8 @@ $(function(){
     el: $("#app"),
     
     events: {
-      "click #createSub":  "createOne"
+      "click #createSub":  "createOne",
+      "click #removeSubs":  "removeAll"
     },
     
     initialize: function() {
@@ -28,7 +29,11 @@ $(function(){
 
     addOne: function(subject) {
       var view = new SubjectView({model: subject});
-      this.$("#subject-list").append(view.render().el);
+      var e = view.render().$el;
+      
+      this.$("#subject-list").append(e.hide());
+      
+      e.slideDown('slow');
     },
     addAll: function() {
       window.subjects.each(this.addOne);
@@ -37,6 +42,11 @@ $(function(){
       log("Create one Subject");
       window.subjects.create({ name: "subject-"+window.guid() });
     },
+    removeAll: function() {
+      while(window.subjects.length) 
+        window.subjects.first().clear(); 
+      
+    }
 
   });
   

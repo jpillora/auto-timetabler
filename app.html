@@ -9,8 +9,12 @@
     <script src="http://cdn.jpillora.com/js/backbone.js"></script>
     -->
     <link  href="http://cdn.jpillora.com/css/reset.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/eggplant/jquery-ui.css" type="text/css" media="all" /> 
     <link  href="css/app.css" rel="stylesheet" type="text/css">
+    
     <script src="http://cdn.jpillora.com/js/jquery.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js" type="text/javascript"></script>
+
     <script src="http://cdn.jpillora.com/js/underscore.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.2/backbone-min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.0/backbone.localStorage-min.js"></script>
@@ -19,38 +23,53 @@
     <script src="class.js"></script>
     <script src="app.js"></script>
 </head>
-<body id="app">
+<body id="app" class="ui-widget-content">
 
-  <div id="subjects">
-    <h3>Subjects</h3>
-    <hr/>
-    <div class="control">
-      <button id="createSub">Create Subject</button>
+  <header class="ui-widget-header ui-corner-all">
+    <h3>Auto-Timetabler</h3>
+  </header>
+  
+  <div id="content">
+  
+    <div id="parsers" class="ui-widget ui-widget-content ui-corner-all">
+      <div class="ui-widget-header ui-corner-all">Quick Add</div>
+      
+      <div id="unsw">
+        <button>UNSW Time Tables</button>
+      </div>
     </div>
-    
-    <div id="subject-list"></div>
-  </div>
   
-  
-  <!-- Templates -->
-  <script type="text/template" id="subject-template">
-    <h1 class="code"><%= code %></h1>
-    <h3 class="name"><%= name %></h3>
-    <button class="removeThis">Remove This</button>
-    <div class='classes'>
-      <label>Classes</label>
-      <div class="list"></div>
+    <div id="subjects" class="ui-widget ui-widget-content ui-corner-all">
+      <div class="ui-widget-header ui-corner-all">Subjects</div>
       <div class="control">
-        <button class="create">Create Class</button>
-        <button class="removeAllClasses">Remove All Classes</button>
+        <button id="createSub">Create Subject</button>
+        <button id="removeSubs">Remove All</button>
       </div>
       
+      <div id="subject-list"></div>
     </div>
-  </script>
-  <script type="text/template" id="class-template">
-    <span><%= location %></span>
-  </script>
+    
+    
+    <!-- Templates -->
+    <script type="text/template" id="subject-template">
+      <h1 class="code"><%= code %></h1>
+      <h3 class="name"><%= name %></h3>
+      <button class="remove">Remove</button>
+      <div class='classes'>
+        <label>Classes</label>
+        <div class="list"></div>
+        <div class="control">
+          <button class="create">Create Class</button>
+        </div>
+        
+      </div>
+    </script>
+    <script type="text/template" id="class-template">
+      <span style="font-weight:bold;"><%= name %></span>
+      <span><%= location %></span>
+      <button class="remove">Remove</button>
+    </script>
   
-  
+  </div>
 </body>
 </html>

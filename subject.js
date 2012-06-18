@@ -7,7 +7,6 @@ $(function(){
   
   //Private helpers
   var log = function(sub, str) { console.log("Subject: " + sub.id + ": " + str); };
-  var _view;
   
   window.Subject = Backbone.Model.extend({
     initialize: function() {
@@ -16,8 +15,11 @@ $(function(){
       this.classes = new ClassList();
       this.classes.localStorage = new Store("class-backbone-from-"+this.get('name'));
     },
-    clear: function() {
-      this.destroy();
+    clear: function(opts) {
+      while(this.classes.length) {
+        this.classes.first().clear({silent: true}); 
+      }
+      this.destroy(opts);
     }
   });
 
@@ -37,15 +39,16 @@ $(function(){
     template: _.template($('#subject-template').html()),
      
     events: {
-      "click .removeThis":  "clear",
-      "click .create":  "createOne",
-      "click .removeAllClasses":  "removeAllClasses"
+      "click .remove":  "clear",
+      "click .create":  "createOne"
     },
     
     initialize: function () {
-      _view = this;
+      
+      _.bindAll(this);
+      
       this.model.bind('change', this.render, this);
-      this.model.bind('destroy', this.remove, this);
+      this.model.bind('destroy', this.slideUpRemove, this);
       
       this.model.classes.bind('add', this.addOne, this);
       this.model.classes.bind('reset', this.addAll, this);
@@ -64,9 +67,11 @@ $(function(){
       return this;
     },
     
-    addOne: function(cl,d,e,f) {
-      var classView = new ClassView({model: cl});
-      _view.classDiv.append(classView.render().el);
+    addOne: function(cl) {
+      var v = new ClassView({model: cl});
+      var e = v.render().$el;
+      this.classDiv.append(e.hide());
+      e.slideDown('slow');
     },
 
     addAll: function() {
@@ -79,14 +84,16 @@ $(function(){
     },
     
     // Remove the item, destroy the model.
-    clear: function() {
+    clear: function(e) {
       log(this.model,"Remove");
+      e.stopImmediatePropagation();
       this.model.clear();
     },
-
-    removeAllClasses: function() {
-      log(this.model,"Remove all Classes");
-      window.model.classes.each(function(c){ c.clear(); });
+    
+    slideUpRemove: function() {
+      this.$el.slideUp('slow', function() {
+        $(this).remove();
+      })
     }
     
   });
