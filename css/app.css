@@ -1,14 +1,19 @@
 
 html {
   font-family: 'Lucida Grande', 'Lucida Sans';
+  background-color: #3D3644;
+}
+
+body {
 }
 
 #app {
-}
-  
-#cage {
   margin: 0 auto;
   width: 600px;
+  background: #867e8f;
+  padding-bottom: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 #content > div {
@@ -21,11 +26,12 @@ h3 {
   font-weight: bold;
 }
 
-header {
+.header {
   text-align: center;
+  margin-top: 20px;
 }
 
-#parsers .control, #subject .control {
+#content > div > .control {
   margin-top: 5px;
 }
 
@@ -45,7 +51,9 @@ header {
   margin: 5px;  
   padding: 5px;  
 }
-
+.ui-widget-content {
+  background-position-y: -20px;
+}
 .ui-widget {
   font-size: 0.85em;
 }

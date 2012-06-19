@@ -18,26 +18,26 @@
     <script src="http://cdn.jpillora.com/js/underscore.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.2/backbone-min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.0/backbone.localStorage-min.js"></script>
-    <script src="setup.js"></script>
-    <script src="subject.js"></script>
-    <script src="class.js"></script>
-    <script src="app.js"></script>
+    <script src="js/setup.js"></script>
+    <script src="js/subject.js"></script>
+    <script src="js/class.js"></script>
+    <script src="js/app.js"></script>
 </head>
-<body id="app" class="ui-widget-content">
+<body>
 
-  <div id="cage">
-
-    <header class="ui-widget-header ui-corner-all">
+  <div id="app">
+    <div style="height:10px;"></div>
+    <div class="header ui-widget-header ui-corner-all">
       <h3>Auto-Timetabler</h3>
-    </header>
+    </div>
     
     <div id="content">
-    
       <div id="parsers" class="ui-widget ui-widget-content ui-corner-all ui-helper-clearfix">
         <div class="ui-widget-header ui-corner-all left">Quick Add</div>
         
         <div class="control right">
           <button>UNSW Time Tables</button>
+          <button>Work Time Tables</button>
         </div>
       </div>
     
@@ -52,6 +52,14 @@
         <div id="subject-list"></div>
       </div>
       
+      <div id="calendar" class="ui-widget ui-widget-content ui-corner-all ui-helper-clearfix">
+        <div class="ui-widget-header ui-corner-all left">Add to Google Calendar</div>
+        
+        <div class="control right">
+          <button>Authorise</button>
+          <button disabled="disabled">Import to Google</button>
+        </div>
+      </div>
       
       <!-- Templates -->
       <script type="text/template" id="subject-template">
