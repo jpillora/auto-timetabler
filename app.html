@@ -25,51 +25,55 @@
 </head>
 <body id="app" class="ui-widget-content">
 
-  <header class="ui-widget-header ui-corner-all">
-    <h3>Auto-Timetabler</h3>
-  </header>
-  
-  <div id="content">
-  
-    <div id="parsers" class="ui-widget ui-widget-content ui-corner-all">
-      <div class="ui-widget-header ui-corner-all">Quick Add</div>
-      
-      <div id="unsw">
-        <button>UNSW Time Tables</button>
-      </div>
-    </div>
-  
-    <div id="subjects" class="ui-widget ui-widget-content ui-corner-all">
-      <div class="ui-widget-header ui-corner-all">Subjects</div>
-      <div class="control">
-        <button id="createSub" data-icon="plus">Create Subject</button>
-        <button id="removeSubs" data-icon="trash">Remove All</button>
-      </div>
-      
-      <div id="subject-list"></div>
-    </div>
+  <div id="cage">
+
+    <header class="ui-widget-header ui-corner-all">
+      <h3>Auto-Timetabler</h3>
+    </header>
     
+    <div id="content">
     
-    <!-- Templates -->
-    <script type="text/template" id="subject-template">
-      <div class="ui-widget-header ui-corner-all"><%= code %></div>
-      <h3 class="name"><%= name %></h3>
-      <button class="remove" data-icon="trash" data-hidetext="true">Remove</button>
-      <div class='classes'>
-        <label>Classes</label>
-        <div class="list"></div>
-        <div class="control">
-          <button class="create" data-icon="plus">Create Class</button>
+      <div id="parsers" class="ui-widget ui-widget-content ui-corner-all ui-helper-clearfix">
+        <div class="ui-widget-header ui-corner-all left">Quick Add</div>
+        
+        <div class="control right">
+          <button>UNSW Time Tables</button>
         </div>
       </div>
+    
+      <div id="subjects" class="ui-widget ui-widget-content ui-corner-all">
+        <div class="ui-helper-clearfix">
+          <div class="ui-widget-header ui-corner-all left">Subjects</div>
+          <div class="control right">
+            <button id="createSub" data-icon="plus">Create Subject</button>
+            <button id="removeSubs" data-icon="trash">Remove All</button>
+          </div>
+        </div>
+        <div id="subject-list"></div>
+      </div>
       
-    </script>
-    <script type="text/template" id="class-template">
-      <span style="font-weight:bold;"><%= name %></span>
-      <span><%= location %></span>
-      <button class="remove" data-icon="trash" data-hidetext="true">Remove</button>
-    </script>
-  
+      
+      <!-- Templates -->
+      <script type="text/template" id="subject-template">
+        <div class="ui-widget-header ui-corner-all"><%= code %></div>
+        <h3 class="name"><%= name %></h3>
+        <button class="remove" data-icon="trash" data-hidetext="true">Remove</button>
+        <div class='classes'>
+          <label>Classes</label>
+          <div class="list"></div>
+          <div class="control">
+            <button class="create" data-icon="plus">Create Class</button>
+          </div>
+        </div>
+        
+      </script>
+      <script type="text/template" id="class-template">
+        <span style="font-weight:bold;"><%= name %></span>
+        <span><%= location %></span>
+        <button class="remove" data-icon="trash" data-hidetext="true">Remove</button>
+      </script>
+    
+    </div>
   </div>
 </body>
 </html>

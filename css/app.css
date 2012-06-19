@@ -1,10 +1,14 @@
 
 html {
-  font-family: Verdana;
+  font-family: 'Lucida Grande', 'Lucida Sans';
 }
 
 #app {
-  min-width: 800px;
+}
+  
+#cage {
+  margin: 0 auto;
+  width: 600px;
 }
 
 #content > div {
@@ -21,10 +25,13 @@ header {
   text-align: center;
 }
 
+#parsers .control, #subject .control {
+  margin-top: 5px;
+}
 
 #subjects .subject {
   border-radius:5; background:white; 
-  width:825px; color:#30273a;padding:30px;
+  color:#30273a;padding:10px;
   margin:10px
 }
 #subjects .subject>button.remove {
@@ -38,3 +45,13 @@ header {
   margin: 5px;  
   padding: 5px;  
 }
+
+.ui-widget {
+  font-size: 0.85em;
+}
+.ui-widget .ui-widget {
+  font-size: 0.75em;
+}
+
+.left { float:left; }
+.right { float:right; }
