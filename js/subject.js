@@ -10,7 +10,8 @@ $(function(){
   
   window.Subject = Backbone.Model.extend({
     initialize: function() {
-      if (!this.get("code")) this.set({"code": "****"});
+      if (!this.get("summary")) this.set({"summary": "COMP9321 Web Applications"});
+      if (!this.get("description")) this.set({"description": "An interesting course on the interwebs."});
       
       this.classes = new ClassList();
       this.classes.localStorage = new Store("class-backbone-from-"+this.get('name'));
@@ -54,6 +55,7 @@ $(function(){
       this.model.classes.bind('reset', this.addAll, this);
       //this.model.classes.bind('all', this.render, this);
       
+      this.editor = this.$(".edit").hide();
       this.classDiv = $("<div/>");
       this.model.classes.fetch();
     },
@@ -66,6 +68,7 @@ $(function(){
       this.$(".list").append(this.classDiv);
       
       this.renderButtons();
+      this.renderEditables(this.saveEditables);
       return this;
     },
     
@@ -83,6 +86,11 @@ $(function(){
     createOne: function() {
       log(this.model,"Create one Class");
       this.model.classes.create({  location: "class-from-"+this.model.get('name') },{wait: true});
+    },
+    
+    saveEditables: function(obj) {
+      log(this.model, "Save to model: " + JSON.stringify(obj));
+      this.model.save(obj);
     },
     
     // Remove the item, destroy the model.

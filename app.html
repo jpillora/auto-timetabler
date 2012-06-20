@@ -61,12 +61,18 @@
         </div>
       </div>
       
-      <!-- Templates -->
+      <!-- Templates 
+          <input class="edit" type="text" value="<%= summary %>" style="display:none;" />
+      -->
       <script type="text/template" id="subject-template">
-        <div class="ui-widget-header ui-corner-all"><%= code %></div>
-        <h3 class="name"><%= name %></h3>
-        <button class="remove" data-icon="trash" data-hidetext="true">Remove</button>
-        <div class='classes'>
+        <div class="summ ui-widget-header ui-corner-all">
+          <label class="editable" data-name="summary"><%= summary %></label>
+          <button class="remove right" data-icon="trash" data-hidetext="true">Remove</button>
+        </div>
+        <div class="desc">
+          <label class="editable" data-name="description" data-multiline><%= description %></label>
+        </div>
+        <div class='classes padit'>
           <label>Classes</label>
           <div class="list"></div>
           <div class="control">

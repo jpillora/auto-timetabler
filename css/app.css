@@ -36,30 +36,26 @@ h3 {
 }
 
 #subjects .subject {
-  border-radius:5; background:white; 
+  border-radius:5px; background:white; 
   color:#30273a;padding:10px;
   margin:10px
 }
-#subjects .subject>button.remove {
-  float:right;
-}
-#subjects .subject .name {font-weight:bold;}
-#subjects .subject .code {text-decoration:underline; }
 
+#subjects .subject .editable { width: 100%; cursor:pointer; }
+#subjects .subject .edits { width: 100%; }
+#subjects .subject>.summ>.editable { width: 80%;  }
+#subjects .subject>.summ>.edits    { width: 80%; height: 19px;   }
+#subjects .subject>.desc { padding: 10px;  }
+#subjects .subject>.desc>.edits { height: auto;  }
+#subjects .subject button.remove { float:right; margin-top: -4px; margin-right: -3px; }
+#subjects .subject>.classes { font-weight: bold; border: thin solid grey; border-radius:5px;  }
 
-.ui-widget-header {
-  margin: 5px;  
-  padding: 5px;  
-}
-.ui-widget-content {
-  background-position-y: -20px;
-}
-.ui-widget {
-  font-size: 0.85em;
-}
-.ui-widget .ui-widget {
-  font-size: 0.75em;
-}
+.ui-widget-header { margin: 5px; padding: 5px;   }
+.ui-widget-content {  background-position-y: -20px; }
+.ui-widget {  font-size: 0.85em; }
+.ui-widget .ui-widget { font-size: 0.75em; }
 
 .left { float:left; }
 .right { float:right; }
+.padit{ margin: 10px;    padding: 10px;   }
+
