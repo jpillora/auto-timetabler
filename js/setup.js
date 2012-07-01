@@ -14,7 +14,7 @@ $(function(){
     _.extend(Backbone.View.prototype, {
       //custom button intialiser
       renderButtons: function() {
-        return this.$("button").each(function(i,html) {
+        this.$("button").each(function(i,html) {
           
           var e = $(html);
           var showText = e.attr('data-hidetext') != "true";
@@ -23,6 +23,9 @@ $(function(){
           if(icon) settings.icons = { secondary: "ui-icon-"+icon };
           e.button(settings);
         });
+        
+        console.log("buttonsets: " + this.$(".buttonset").buttonset().length);
+        
       },
       //custom editable field initialiser
       renderEditables: function(saveCallback) {

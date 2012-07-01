@@ -37,7 +37,8 @@ $(function(){
     tagName:  "div",
 
     // Cache the template function for a single item.
-    template: _.template($('#subject-template').html()),
+    subjectTemplate: _.template($('#subject-template').html()),
+    classHeadingTemplate: _.template($('#class-heading-template').html()),
      
     events: {
       "click .remove":  "clear",
@@ -49,24 +50,22 @@ $(function(){
       _.bindAll(this);
       
       this.model.bind('change', this.render, this);
-      this.model.bind('destroy', this.slideUpRemove, this);
+      this.model.bind('destroy', this.animRemove, this);
       
       this.model.classes.bind('add', this.addOne, this);
       this.model.classes.bind('reset', this.addAll, this);
       //this.model.classes.bind('all', this.render, this);
       
       this.editor = this.$(".edit").hide();
-      this.classDiv = $("<div/>");
+      this.classTable = $("<table/>").append(this.classHeadingTemplate());
       this.model.classes.fetch();
     },
     
     render: function() {
       log(this.model,"Render View");
-      
       this.$el.addClass("subject");
-      this.$el.html(this.template(this.model.toJSON()));
-      this.$(".list").append(this.classDiv);
-      
+      this.$el.html(this.subjectTemplate(this.model.toJSON()));
+      this.$(".list").append(this.classTable);
       this.renderButtons();
       this.renderEditables(this.saveEditables);
       return this;
@@ -75,8 +74,9 @@ $(function(){
     addOne: function(cl) {
       var v = new ClassView({model: cl});
       var e = v.render().$el;
-      this.classDiv.append(e.hide());
-      e.slideDown('slow');
+      e.find(">td>div").hide();
+      this.classTable.append(e);
+      e.find(">td>div").slideDown('slow');
     },
 
     addAll: function() {
@@ -100,7 +100,7 @@ $(function(){
       this.model.clear();
     },
     
-    slideUpRemove: function() {
+    animRemove: function() {
       this.$el.slideUp('slow', function() {
         $(this).remove();
       })

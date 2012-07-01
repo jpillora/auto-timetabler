@@ -10,6 +10,9 @@ $(function(){
   window.Class = Backbone.Model.extend({
     initialize: function() {
       this.set({"name": this.id});
+      this.set({"location": "PLACE"});
+      this.set({"start": "07:00"});
+      this.set({"end": "11:00"});
       log(this,"New!");
     },
     clear: function(opts) {
@@ -23,7 +26,7 @@ $(function(){
   });
   
   window.ClassView = Backbone.View.extend({
-    tagName:  "div",
+    tagName:  "tr",
 
     // Cache the template function for a single item.
     template: _.template($('#class-template').html()),
@@ -35,7 +38,7 @@ $(function(){
     initialize: function () {
       _.bindAll(this);
       this.model.bind('change', this.render, this);
-      this.model.bind('destroy', this.slideUpRemove, this);
+      this.model.bind('destroy', this.animRemove, this);
     },
     
     render: function() {
@@ -51,8 +54,8 @@ $(function(){
       this.model.clear();
     },
     
-    slideUpRemove: function() {
-      this.$el.slideUp('slow', function() {
+    animRemove: function() {
+      this.$el.find(">td>div").slideUp('slow', function() {
         $(this).remove();
       })
     }
