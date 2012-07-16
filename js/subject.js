@@ -17,9 +17,8 @@ $(function(){
       this.classes.localStorage = new Store("class-backbone-from-"+this.get('name'));
     },
     clear: function(opts) {
-      while(this.classes.length) {
+      while(this.classes.length)
         this.classes.first().clear({silent: true}); 
-      }
       this.destroy(opts);
     }
   });

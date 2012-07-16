@@ -8,6 +8,9 @@
      *
     <script src="http://cdn.jpillora.com/js/backbone.js"></script>
     -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=9" />
+    
     <link  href="http://cdn.jpillora.com/css/reset.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/eggplant/jquery-ui.css" type="text/css" media="all" /> 
     <link  href="css/app.css" rel="stylesheet" type="text/css">
@@ -15,6 +18,7 @@
     <script src="http://cdn.jpillora.com/js/jquery.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js" type="text/javascript"></script>
 
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/json3/3.2.2/json3.min.js"></script>
     <script src="http://cdn.jpillora.com/js/underscore.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.2/backbone-min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.0/backbone.localStorage-min.js"></script>
@@ -27,7 +31,7 @@
 
   <div id="app">
     <div style="height:10px;"></div>
-    <div class="header ui-widget-header ui-corner-all">
+    <div class="header ui-widget-header ui-corner-all" style="margin:5px">
       <h3>Auto-Timetabler</h3>
     </div>
     
@@ -46,8 +50,8 @@
         
         <div class="control right">
             <div id="timespan" class="buttonset">
-              <input type="radio" id="timespanW" name="timespan" /><label for="timespanW">Week</label>
-              <input type="radio" id="timespanF" name="timespan" checked="checked" /><label for="timespanF">Fortnight</label>
+              <input type="radio" id="timespanW" name="timespan" value="week"/><label for="timespanW">Week</label>
+              <input type="radio" id="timespanF" name="timespan" value="fortnight" checked="checked" /><label for="timespanF">Fortnight</label>
             </div>
         </div>
       </div>

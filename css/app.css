@@ -50,7 +50,7 @@ h3 {
 #subjects .subject button.remove { float:right; margin-top: -4px; margin-right: -3px; }
 #subjects .subject>.classes { font-weight: bold; border: thin solid grey; border-radius:5px;  }
 
-.ui-widget-header { margin: 5px; padding: 5px;   }
+.ui-widget-header { padding: 5px;   }
 .ui-widget-content {  background-position-y: -20px; }
 .ui-widget {  font-size: 0.85em; }
 .ui-widget .ui-widget { font-size: 0.75em; }

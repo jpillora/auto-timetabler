@@ -30,11 +30,8 @@ $(function(){
 
     addOne: function(subject) {
       var view = new SubjectView({model: subject});
-      var e = view.render().$el;
-      
-      this.$("#subject-list").append(e.hide());
-      
-      e.slideDown('slow');
+      var e = view.render().$el.hide().delay(100).slideDown('slow');
+      this.$("#subject-list").append(e);
     },
     addAll: function() {
       window.subjects.each(this.addOne);
