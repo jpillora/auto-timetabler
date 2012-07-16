@@ -1,0 +1,85 @@
+
+  <div id="app">
+    <div style="height:10px;"></div>
+    <div class="header ui-widget-header ui-corner-all" style="margin:5px">
+      <h3>Auto-Timetabler</h3>
+    </div>
+    
+    <div id="content">
+      <div id="parsers" class="ui-widget ui-widget-content ui-corner-all left">
+        <div class="ui-widget-header ui-corner-all left">Quick Add</div>
+        
+        <div class="control right">
+          <button>UNSW Time Tables</button>
+        </div>
+      </div>
+      
+      
+      <div id="settings" class="ui-widget ui-widget-content ui-corner-all right">
+        <div class="ui-widget-header ui-corner-all left">Settings</div>
+        
+        <div class="control right">
+            <div id="timespan" class="buttonset">
+              <input type="radio" id="timespanW" name="timespan" value="week"/>
+              <label for="timespanW">Week</label>
+              <input type="radio" id="timespanF" name="timespan" value="fortnight" checked="checked" />
+              <label for="timespanF">Fortnight</label>
+            </div>
+        </div>
+      </div>
+    
+      <div class=" ui-helper-clearfix"></div>
+    
+      <div id="subjects" class="ui-widget ui-widget-content ui-corner-all">
+        <div class="ui-helper-clearfix">
+          <div class="ui-widget-header ui-corner-all left">Subjects</div>
+          <div class="control right">
+            <button id="createSub" data-icon="plus">Create Subject</button>
+            <button id="removeSubs" data-icon="trash">Remove All</button>
+          </div>
+        </div>
+        <div id="subject-list"></div>
+      </div>
+      
+      <div id="calendar" class="ui-widget ui-widget-content ui-corner-all ui-helper-clearfix">
+        <div class="ui-widget-header ui-corner-all left">Add to Google Calendar</div>
+        
+        <div class="control right">
+          <button>Authorise</button>
+          <button disabled="disabled">Import to Google</button>
+        </div>
+      </div>
+      
+      <!-- Templates-->
+      <script type="text/template" id="subject-template">
+        <div class="summ ui-widget-header ui-corner-all">
+          <label class="editable" data-name="summary">{{= summary }}</label>
+          <button class="remove right" data-icon="trash" data-hidetext="true">Remove</button>
+        </div>
+        <div class="desc">
+          <label class="editable" data-name="description" data-multiline>{{= description }}</label>
+        </div>
+        <div class='classes padit'>
+          <label>Classes</label>
+          <div class="list">
+          </div>
+          <div class="control">
+            <button class="create" data-icon="plus">Create Class</button>
+          </div>
+        </div>
+        
+      </script>
+      
+      
+      <script type="text/template" id="class-heading-template">
+        <tr><th>Location</th><th>Start</th><th>End</th><th></th></tr>
+      </script>
+      <script type="text/template" id="class-template">
+        <td style="font-weight:bold;"><div>{{= location }}</div></td>
+        <td><div>{{= start }}</div></td>
+        <td><div>{{= end }}</div></td>
+        <td><div><button class="remove" data-icon="trash" data-hidetext="true">Remove</button></div></td>
+      </script>
+    
+    </div>
+  </div>

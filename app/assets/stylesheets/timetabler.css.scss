@@ -1,0 +1,60 @@
+html {
+  font-family: Lucida Grande, Lucida Sans, Arial, sans-serif;
+  background-color: #3D3644;
+}
+
+body {
+}
+
+#app {
+  margin: 0 auto;
+  width: 600px;
+  background: #867e8f;
+  padding-bottom: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+#content > div {
+  margin: 10px;  
+  padding: 10px;  
+}
+
+h3 {
+  font-size: 1.25em;
+  font-weight: bold;
+}
+
+.header {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#content > div > .control {
+  margin-top: 5px;
+}
+
+#subjects .subject {
+  border-radius:5px; background:white; 
+  color:#30273a;padding:10px;
+  margin:10px
+}
+
+#subjects .subject .editable { width: 100%; cursor:pointer; }
+#subjects .subject .edits { width: 100%; }
+#subjects .subject>.summ>.editable { width: 80%;  }
+#subjects .subject>.summ>.edits    { width: 80%; height: 19px;   }
+#subjects .subject>.desc { padding: 10px;  }
+#subjects .subject>.desc>.edits { height: auto;  }
+#subjects .subject button.remove { float:right; margin-top: -4px; margin-right: -3px; }
+#subjects .subject>.classes { font-weight: bold; border: thin solid grey; border-radius:5px;  }
+
+.ui-widget-header { padding: 5px;   }
+.ui-widget-content {  background-position-y: -20px; }
+.ui-widget {  font-size: 0.85em; }
+.ui-widget .ui-widget { font-size: 0.75em; }
+
+.left { float:left; }
+.right { float:right; }
+.padit{ margin: 10px;    padding: 10px;   }
+
