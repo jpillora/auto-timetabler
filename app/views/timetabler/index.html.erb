@@ -52,33 +52,13 @@
       
       <!-- Templates-->
       <script type="text/template" id="subject-template">
-        <div class="summ ui-widget-header ui-corner-all">
-          <label class="editable" data-name="summary">{{= summary }}</label>
-          <button class="remove right" data-icon="trash" data-hidetext="true">Remove</button>
-        </div>
-        <div class="desc">
-          <label class="editable" data-name="description" data-multiline>{{= description }}</label>
-        </div>
-        <div class='classes padit'>
-          <label>Classes</label>
-          <div class="list">
-          </div>
-          <div class="control">
-            <button class="create" data-icon="plus">Create Class</button>
-          </div>
-        </div>
-        
+      <%= render :partial => 'timetabler/template/subject' %>        
       </script>
-      
-      
-      <script type="text/template" id="class-heading-template">
-        <tr><th>Location</th><th>Start</th><th>End</th><th></th></tr>
+      <script type="text/template" id="class-table-template">
+      <%= render :partial => 'timetabler/template/class_table' %>    
       </script>
       <script type="text/template" id="class-template">
-        <td style="font-weight:bold;"><div>{{= location }}</div></td>
-        <td><div>{{= start }}</div></td>
-        <td><div>{{= end }}</div></td>
-        <td><div><button class="remove" data-icon="trash" data-hidetext="true">Remove</button></div></td>
+      <%= render :partial => 'timetabler/template/class_cont' %>    
       </script>
     
     </div>

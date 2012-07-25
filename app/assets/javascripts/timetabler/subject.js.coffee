@@ -29,7 +29,7 @@ $ ->
   class window.SubjectView extends Backbone.View
     tagName: "div"
     subjectTemplate: _.template($("#subject-template").html())
-    classHeadingTemplate: _.template($("#class-heading-template").html())
+    classTableTemplate: _.template($("#class-table-template").html())
     events:
       "click .remove": "clear"
       "click .create": "createOne"
@@ -41,7 +41,7 @@ $ ->
       @model.classes.bind "add", @addOne, this
       @model.classes.bind "reset", @addAll, this
       @editor = @$(".edit").hide()
-      @classTable = $("<table/>").append(@classHeadingTemplate())
+      @classTable = $(@classTableTemplate())
       @model.classes.fetch()
 
     render: ->
@@ -56,9 +56,8 @@ $ ->
     addOne: (cl) ->
       v = new ClassView(model: cl)
       e = v.render().$el
-      e.find(">td>div").hide()
+      e.find(">td>div").hide().delay(100).slideDown("slow")
       @classTable.append e
-      e.find(">td>div").slideDown "slow"
 
     addAll: ->
       @model.classes.each @addOne
